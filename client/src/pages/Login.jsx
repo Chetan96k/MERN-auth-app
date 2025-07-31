@@ -61,7 +61,7 @@ const Login = () => {
     <div className="min-h-screen flex items-center justify-center bg-white text-black px-4">
       <div className="w-full max-w-md p-10 rounded-2xl bg-white/50 backdrop-blur-md border border-neutral-200 shadow-xl">
         <h2 className="text-3xl font-semibold text-center mb-8 text-neutral-900">
-          Log in to your account
+          Log in to your Account
         </h2>
         <form className="space-y-6" onSubmit={handleLogin}>
           <div>

@@ -20,7 +20,6 @@ app.get('/', (req, res) => {
   res.send('Welcome to Task Buddy Backend!');
 });
 
-// Example route (update this to actual route file when available)
 app.use('/auth', AuthRouter);
 app.use('/products', ProductRouter);
 
