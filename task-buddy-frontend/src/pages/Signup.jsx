@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { handleError, handleSuccess } from "../utils/formError.js";
+const BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -26,7 +27,8 @@ const Signup = () => {
     }
 
     try {
-      const url = "http://localhost:5000/auth/signup";
+      const url = `${BASE_URL}/auth/signup`;
+      // const url = "http://localhost:5000/auth/signup";
 
       const response = await fetch(url, {
         method: "POST",
@@ -37,7 +39,7 @@ const Signup = () => {
       });
 
       const result = await response.json();
-      console.log(result);
+      // console.log(result);
 
       const { success, message } = result;
 
@@ -45,9 +47,8 @@ const Signup = () => {
         handleSuccess(message);
         navigate("/login");
       } else {
-        // Handle error message from server
         const errorMessage = result?.message || "Signup failed";
-        handleError(errorMessage.replace(/['"]+/g, "")); // Remove extra quotes if any
+        handleError(errorMessage.replace(/['"]+/g, ""));
       }
     } catch (err) {
       handleError(err.message || "Something went wrong");
@@ -55,12 +56,14 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 text-black">
-      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
-        <h2 className="text-2xl font-semibold text-center mb-6">Sign Up</h2>
-        <form className="space-y-4" onSubmit={handleSignup}>
+    <div className="min-h-screen flex items-center justify-center bg-white text-black px-4">
+      <div className="w-full max-w-md p-10 rounded-2xl bg-white/50 backdrop-blur-md border border-neutral-200 shadow-xl">
+        <h2 className="text-3xl font-semibold text-center mb-8 text-neutral-900">
+          Create your account
+        </h2>
+        <form className="space-y-6" onSubmit={handleSignup}>
           <div>
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-medium text-neutral-700 mb-1">
               Name
             </label>
             <input
@@ -68,12 +71,12 @@ const Signup = () => {
               name="name"
               value={signupInfo.name}
               onChange={handleChange}
-              placeholder="Enter your name"
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              placeholder="Your name"
+              className="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-[15px] bg-white/70 backdrop-blur-sm focus:outline-none focus:ring-[1.5px] focus:ring-black transition"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-medium text-neutral-700 mb-1">
               Email
             </label>
             <input
@@ -81,12 +84,12 @@ const Signup = () => {
               name="email"
               value={signupInfo.email}
               onChange={handleChange}
-              placeholder="Enter your email"
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              placeholder="you@example.com"
+              className="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-[15px] bg-white/70 backdrop-blur-sm focus:outline-none focus:ring-[1.5px] focus:ring-black transition"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block text-sm font-medium text-neutral-700 mb-1">
               Password
             </label>
             <input
@@ -94,26 +97,26 @@ const Signup = () => {
               name="password"
               value={signupInfo.password}
               onChange={handleChange}
-              placeholder="Enter your password"
-              className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+              placeholder="••••••••"
+              className="w-full px-4 py-2.5 border border-neutral-300 rounded-lg text-[15px] bg-white/70 backdrop-blur-sm focus:outline-none focus:ring-[1.5px] focus:ring-black transition"
             />
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition"
+            className="w-full bg-black text-white py-2.5 rounded-lg text-[15px] font-medium hover:opacity-90 transition"
           >
             Sign Up
           </button>
         </form>
 
-        <p className="text-sm text-center mt-4">
+        <p className="text-sm text-center mt-6 text-neutral-600">
           Already have an account?{" "}
-          <Link to="/login" className="text-blue-500 hover:underline">
+          <Link to="/login" className="text-black font-medium hover:underline">
             Login here
           </Link>
         </p>
-        <ToastContainer />
       </div>
+      <ToastContainer />
     </div>
   );
 };

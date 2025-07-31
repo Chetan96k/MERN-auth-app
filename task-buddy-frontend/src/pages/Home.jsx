@@ -19,14 +19,18 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-white text-black p-4">
-      <h1 className="text-3xl font-bold mb-4">Welcome, {loggedInUser} 👋</h1>
-      <button
-        onClick={handleLogout}
-        className="bg-red-500 text-white px-6 py-2 rounded-md hover:bg-red-600 transition"
-      >
-        Logout
-      </button>
+    <div className="min-h-screen bg-gradient-to-br from-white to-gray-200 flex items-center justify-center px-4">
+      <div className="backdrop-blur-md bg-white/50 border border-gray-200 rounded-2xl shadow-lg p-8 w-full max-w-md text-center">
+        <h1 className="text-4xl font-semibold mb-6 text-gray-800">
+          Welcome, <span className="text-blue-600">{loggedInUser}</span> 👋
+        </h1>
+        <button
+          onClick={handleLogout}
+          className="mt-4 bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-lg text-lg transition-all duration-200"
+        >
+          Logout
+        </button>
+      </div>
       <ToastContainer />
     </div>
   );
