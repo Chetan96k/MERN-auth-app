@@ -14,7 +14,12 @@ const PORT = process.env.PORT || 8080;
 
 // Middleware
 app.use(bodyParser.json());
-app.use(cors());
+const allowedOrigins = ['https://your-client.vercel.app'];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true // if using cookies
+}));
 
 // Routes
 app.get('/', (req, res) => {
