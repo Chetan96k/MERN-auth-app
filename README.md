@@ -1,108 +1,54 @@
-# 🧠 Task Buddy – Backend API
+# MERN Auth App
 
-This is the backend for **Task Buddy**, a task management application built using **Node.js**, **Express**, and **MongoDB**. It supports user authentication using JWT and provides protected endpoints.
+A full-stack authentication system using the MERN stack (MongoDB, Express.js, React, Node.js). This app allows users to sign up, log in, and view a protected home page with personalized greetings. It uses JWT for authentication and middleware for route protection.
+
+## 🔧 Features
+
+- User Signup & Login
+- JWT-based Authentication
+- Protected Routes
+- Middleware Validation
+- React Frontend with Form Validation
+- Express + MongoDB Backend
+
+## 🚀 Tech Stack
+
+- **Frontend:** React, Tailwind CSS (if used)
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Auth:** JSON Web Tokens (JWT)
+
+## 📁 Project Structure
+
+client/ → React frontend
+server/ → Node.js + Express backend
+server/models/ → Mongoose models
+server/routes/ → API routes
+server/middleware/ → Auth middleware
+
+## 🛠️ Setup Instructions
+
+```bash
+1. **Clone the repo**
+git clone https://github.com/your-username/mern-auth-app.git
+
+2. Install server dependencies
+cd server
+npm install
+
+3. Create a .env file in server/
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+
+4. Start the server
+npm run dev
+
+5. Install client dependencies
+cd ../client
+npm install
+
+6. Start the React app
+npm run dev
 
 ---
-
-## 🚀 Features
-
-- ✅ User Registration (`/signup`)
-- ✅ User Login (`/login`)
-- ✅ Protected Profile Route (`/profile`)
-- ✅ JWT Token Authentication
-- ✅ Password Hashing with Bcrypt
-- ✅ MongoDB with Mongoose ODM
-
----
-
-## 📁 Folder Structure
-
-task-buddy-backend/
-├── controllers/
-│ ├── authController.js
-│ └── userController.js
-├── middleware/
-│ └── authMiddleware.js
-├── models/
-│ └── User.js
-├── routes/
-│ ├── authRoutes.js
-│ └── userRoutes.js
-├── .env
-├── server.js
-└── package.json
-
----
-
-## ⚙️ Tech Stack
-
-- **Node.js** + **Express**
-- **MongoDB** + **Mongoose**
-- **JWT** for authentication
-- **Bcrypt.js** for password hashing
-- **dotenv** for environment variables
-- **cors** for handling cross-origin requests
-
----
-
-## 🧪 API Endpoints
-
-### 📝 Register – `POST /api/auth/signup`
-
-**Request Body:**
-```json
-{
-  "name": "John Doe",
-  "email": "john@example.com",
-  "password": "123456"
-}
-
-Response:
-{
-  "id": "...",
-  "name": "John Doe",
-  "email": "john@example.com",
-  "token": "..."
-}
-
-🔑 Login – POST /api/auth/login
-
-Request Body:
-{
-  "email": "john@example.com",
-  "password": "123456"
-}
-
-Response:
-{
-  "id": "...",
-  "name": "John Doe",
-  "email": "john@example.com",
-  "token": "..."
-}
-
-👤 Get Profile – GET /api/user/profile (🔒 Protected)
-Headers:
-
-Authorization: Bearer <your_token_here>
-Response:
-
-{
-  "_id": "...",
-  "name": "John Doe",
-  "email": "john@example.com",
-  "createdAt": "...",
-  "updatedAt": "..."
-}
-
-🔐 Authentication Flow
-User signs up or logs in
-Backend returns a JWT token
-Client sends token in Authorization header
-Middleware verifies token and gives access to protected routes
-
-
-📌 Notes
-Passwords are stored securely using bcrypt
-All protected routes require a valid JWT token
-MongoDB connection is handled using Mongoose
