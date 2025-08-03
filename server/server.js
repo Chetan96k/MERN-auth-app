@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import './models/db.js'; // Include `.js` extension explicitly in ESM
 import AuthRouter from './routes/AuthRouter.js'; // Include `.js` extension explicitly in ESM
 import ProductRouter from './routes/ProductRouter.js'; // Include `.js` extension explicitly in ESM
+import ExpenseRouter from './routes/ExpenseRouter.js';
 
 dotenv.config();
 
@@ -22,6 +23,7 @@ app.get('/', (req, res) => {
 
 app.use('/auth', AuthRouter);
 app.use('/products', ProductRouter);
+app.use('/expenses', ExpenseRouter);
 
 app.listen(PORT, () => {
   console.log(`✅ Server is running on port ${PORT}`);
