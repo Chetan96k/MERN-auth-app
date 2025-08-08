@@ -28,7 +28,7 @@ server/middleware/ → Auth middleware
 
 ## 🛠️ Setup Instructions
 
-```bash
+```
 1. **Clone the repo**
 git clone https://github.com/your-username/mern-auth-app.git
 
@@ -51,4 +51,14 @@ npm install
 6. Start the React app
 npm run dev
 
----
+```
+- Built with the MERN Stack (MongoDB, Express.js, React, Node.js) for full-stack functionality.
+
+- Implemented real-time login/signup forms with React and backend API integration.
+
+- Secured routes using JWT (JSON Web Token) in Express.js middleware to prevent unauthorized access.
+
+- Performed form validation on the backend using Express and Mongoose.
+
+- Stored JWT in localStorage to maintain user sessions and reduce unnecessary server calls.
+
